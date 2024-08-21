@@ -53,14 +53,8 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($IdBarang);
         $barang->update([
             'NamaBarang'     => $request->NamaBarang,
-            // 'content'   => $request->content
         ]);
 
-        // return redirect('/barang/index')->with('success', 'Data Berhasil Diupdate');
-        // return response()->json([
-        //     'status' => 'success',
-        //     'reason' => 'Sukses Edit Data',
-        // ]);
         return response()->json(array('status' => 'success', 'reason' => 'Sukses Edit Data'));
 
     }
