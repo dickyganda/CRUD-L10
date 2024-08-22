@@ -6,6 +6,7 @@ use App\Models\Barang;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class BarangController extends Controller
 {
@@ -31,6 +32,8 @@ class BarangController extends Controller
         $barang = new Barang();
         $barang->KodeBarang = $request->KodeBarang;
         $barang->NamaBarang = $request->NamaBarang;
+        $barang->HargaBarang = $request->HargaBarang;
+        $barang->CreatedAt = Carbon::now();
         $barang->save();
 
         return response()->json(array('status' => 'success', 'reason' => 'Sukses Tambah Data'));
@@ -53,6 +56,8 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($IdBarang);
         $barang->update([
             'NamaBarang'     => $request->NamaBarang,
+            'KodeBarang'     => $request->KodeBarang,
+            'UpdateAt'     => Carbon::now(),
         ]);
 
         return response()->json(array('status' => 'success', 'reason' => 'Sukses Edit Data'));

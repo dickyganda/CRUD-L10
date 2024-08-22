@@ -16,22 +16,22 @@ Edit Barang
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        {{-- @foreach($barang as $item) --}}
                         <form id="editbarang" action="{{ route('barang.update', $barang->IdBarang) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <div class="form-group">
+                                <label class="font-weight-bold">Kode Barang</label>
+                                <input type="text" class="form-control" name="KodeBarang" placeholder="Item Code" value="{{ $barang->KodeBarang }}"></input>
+                            </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Nama Barang</label>
-                                <input type="text" class="form-control" name="NamaBarang" placeholder="Masukkan Nama Barang" value="{{ $barang->NamaBarang }}"></input>
+                                <input type="text" class="form-control" name="NamaBarang" placeholder="Item Name" value="{{ $barang->NamaBarang }}"></input>
                             </div>
 
-                            <button type="submit" class="btn btn-md btn-primary">UPDATE</button>
-                            {{-- <button type="reset" class="btn btn-md btn-warning">RESET</button> --}}
 
+                            <button type="submit" class="btn btn-sm btn-primary">Save</button>
                         </form>
-                        {{-- @endforeach --}}
-                        
                     </div>
                 </div>
             </div>

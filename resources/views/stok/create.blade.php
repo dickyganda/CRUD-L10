@@ -1,8 +1,7 @@
 @extends('layouts.main')
-{{-- @inject('carbon', 'Carbon\Carbon') --}}
 
 @section('title')
-Insert Barang
+Insert Stok
 @endsection
 
 @section('content')
@@ -12,24 +11,29 @@ Insert Barang
         <div class="col-lg-12">
             <div id="panel-3" class="panel">
                 <div class="panel-hdr">
-                    <h2>Data Barang</h2>
+                    <h2>Data Stok</h2>
                 </div>
                 <div class="panel-container show">
                     <div class="panel-content">
-                        <form action="#" id="tambahbarang">
+                        <form action="#" id="tambahstok">
                             {{ csrf_field() }}
 
                             <div class="form-group">
-                                <input type="text" name="KodeBarang" required="required" class="form-control form-control-sm" placeholder="Item Code">
+                                <select id="IdBarang" name="IdBarang" style="width: 100%"
+                                                class="form-control form-control-sm select2">
+                                                <option disabled selected>Select Kode Barang</option>
+                                                @foreach ($barang as $item)
+                                                <option value="{{ $item->IdBarang }}">
+                                                    {{ $item->KodeBarang }}
+                                                </option>
+                                                @endforeach
+                                            </select>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" name="NamaBarang" required="required" class="form-control form-control-sm" placeholder="Item Name">
+                                <input type="text" name="JumlahStok" required="required" class="form-control form-control-sm" placeholder="Stok">
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" name="HargaBarang" required="required" class="form-control form-control-sm" placeholder="Item Price">
-                            </div>
                             <br>
                             <button class="btn btn-success btn-xs"><i class="fal fa-save"></i> Save</button>
                         </form>
@@ -44,14 +48,14 @@ Insert Barang
 
 @section('js-addon')
 <script>
-    $("#tambahbarang").submit(function (event) {
+    $("#tambahstok").submit(function (event) {
         event.preventDefault()
         var formdata = new FormData(this);
         
         $.ajax({
             type: 'POST',
             dataType: 'json',
-            url: '/barang/store',
+            url: '/stok/store',
             data: formdata,
             contentType: false,
             cache: false,
@@ -62,7 +66,7 @@ Insert Barang
                     text: "You clicked the button!",
                     icon: "success"
                 }).then(() => {
-                    location.replace("/barang/index");
+                    location.replace("/stok/index");
                 });
             }
         });

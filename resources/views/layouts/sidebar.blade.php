@@ -150,6 +150,11 @@
                             <span class="nav-link-text" data-i18n="nav.theme_settings_how_it_works">Master Barang</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/stok/index" title="How it works" data-filter-tags="theme settings how it works">
+                            <span class="nav-link-text" data-i18n="nav.theme_settings_how_it_works">Master Stok</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-title">Tools & Components</li>
